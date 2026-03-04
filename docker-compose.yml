@@ -7,8 +7,8 @@ services:
       - "5000:5000"
     environment:
       - MLFLOW_BACKEND_STORE_URI=sqlite:///mlflow.db
-      - MLFLOW_DEFAULT_ARTIFACT_ROOT=./mlruns
+      - MLFLOW_DEFAULT_ARTIFACT_ROOT=/mlruns
     volumes:
-      - ./mlruns:/mlflow/mlruns
+      - ./mlruns:/mlruns
       - ./mlflow.db:/mlflow/mlflow.db
-    command: mlflow server --host 0.0.0.0 --port 5000 --backend-store-uri sqlite:///mlflow.db --default-artifact-root /mlflow/mlruns
+    command: mlflow server --host 0.0.0.0 --port 5000 --backend-store-uri sqlite:///mlflow.db --default-artifact-root /mlruns
