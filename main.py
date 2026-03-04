@@ -7,7 +7,7 @@ from sklearn.metrics import accuracy_score, classification_report
 import numpy as np
 
 # Set MLflow tracking URI to local directory
-mlflow.set_tracking_uri("http://localhost:5000")
+mlflow.set_tracking_uri("file:./mlruns")
 mlflow.set_experiment("Iris Classification Practice")
 
 # Load dataset
