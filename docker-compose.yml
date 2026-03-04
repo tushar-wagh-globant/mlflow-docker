@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   mlflow:
     image: ghcr.io/mlflow/mlflow:latest
@@ -7,7 +5,7 @@ services:
       - "5000:5000"
     environment:
       - MLFLOW_BACKEND_STORE_URI=sqlite:///mlflow.db
-      - MLFLOW_DEFAULT_ARTIFACT_ROOT=/mlruns
+      - MLFLOW_DEFAULT_ARTIFACT_ROOT=./mlruns
     volumes:
       - ./mlruns:/mlruns
       - ./mlflow.db:/mlflow/mlflow.db

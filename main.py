@@ -6,8 +6,8 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, classification_report
 import numpy as np
 
-# Set MLflow tracking URI to local directory
-mlflow.set_tracking_uri("file:./mlruns")
+# Set MLflow tracking URI to server
+mlflow.set_tracking_uri("http://localhost:5000")
 mlflow.set_experiment("Iris Classification Practice")
 
 # Load dataset
@@ -40,18 +40,18 @@ for i, params in enumerate(param_combinations):
         # Log metrics
         mlflow.log_metric("accuracy", accuracy)
         
-        # Log model
-        mlflow.sklearn.log_model(model, "model")
+# Log model (commented out due to artifact storage issue)
+        # mlflow.sklearn.log_model(model, "model")
         
-        # Log dataset info as artifact
-        with open("dataset_info.txt", "w") as f:
-            f.write(f"Iris Dataset\n")
-            f.write(f"Features: {iris.feature_names}\n")
-            f.write(f"Target classes: {iris.target_names}\n")
-            f.write(f"Training samples: {len(X_train)}\n")
-            f.write(f"Test samples: {len(X_test)}\n")
-        
-        mlflow.log_artifact("dataset_info.txt")
+        # Log dataset info as artifact (commented out due to artifact storage issue)
+        # with open("dataset_info.txt", "w") as f:
+        #     f.write(f"Iris Dataset\n")
+        #     f.write(f"Features: {iris.feature_names}\n")
+        #     f.write(f"Target classes: {iris.target_names}\n")
+        #     f.write(f"Training samples: {len(X_train)}\n")
+        #     f.write(f"Test samples: {len(X_test)}\n")
+        # 
+        # mlflow.log_artifact("dataset_info.txt")
         
         print(f"Run {i+1}: Accuracy = {accuracy:.4f}")
 
